@@ -1,0 +1,89 @@
+{
+  "protocol_version" : "0.0.2",
+  "configuration" : {
+    "version" : "5.18.0.240 (tarball)",
+    "tlc" : "__thread",
+    "sigsgev" : "altstack",
+    "notifications" : "epoll",
+    "architecture" : "amd64",
+    "disabled_features" : "none",
+    "smallconfig" : "disabled",
+    "bigarrays" : "disabled",
+    "softdebug" : "enabled",
+    "interpreter" : "enabled",
+    "llvm_support" : "disabled",
+    "suspend" : "preemptive"
+  },
+  "memory" : {
+    "minor_gc_time" : "0",
+    "major_gc_time" : "6424",
+    "minor_gc_count" : "0",
+    "major_gc_count" : "1",
+    "major_gc_time_concurrent" : "0"
+ },
+  "threads" : [
+ {
+    "is_managed" : false,
+    "crashed" : false,
+    "managed_thread_ptr" : "0x0",
+    "native_thread_id" : "0x7f7665975f80",
+    "thread_info_addr" : "0x0",
+    "thread_name" : "godot",
+    "ctx" : {
+      "IP" : "0x7f76655858c2",
+      "SP" : "0x7ffd76ff4f70",
+      "BP" : "0x648bea0"
+  },
+    "unmanaged_frames" : [
+  {
+      "native_address" : "unregistered"
+   }
+
+  ]
+ },
+ {
+    "is_managed" : false,
+    "crashed" : false,
+    "managed_thread_ptr" : "0x0",
+    "native_thread_id" : "0x7f7654e77700",
+    "thread_info_addr" : "0x0",
+    "thread_name" : "Debugger agent",
+    "ctx" : {
+      "IP" : "0x7f76655866d7",
+      "SP" : "0x7f7654e76980",
+      "BP" : "(nil)"
+  },
+    "unmanaged_frames" : [
+  {
+      "native_address" : "unregistered"
+   }
+
+  ]
+ },
+ {
+    "is_managed" : false,
+    "crashed" : true,
+    "managed_thread_ptr" : "0x0",
+    "native_thread_id" : "0x7f765533f700",
+    "thread_info_addr" : "0x0",
+    "thread_name" : "Finalizer",
+    "ctx" : {
+      "IP" : "0x7f7664a18e97",
+      "SP" : "0x7f765533d680",
+      "BP" : "0x7f765533d8d8"
+  },
+    "managed_frames" : [
+  {
+      "native_address" : "unregistered"
+   }
+
+  ],
+  "unmanaged_frames" : [
+ {
+    "native_address" : "unregistered"
+  }
+
+ ]
+}
+]
+}

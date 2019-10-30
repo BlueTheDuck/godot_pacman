@@ -1,0 +1,70 @@
+{
+  "protocol_version" : "0.0.2",
+  "configuration" : {
+    "version" : "5.18.0.240 (tarball)",
+    "tlc" : "__thread",
+    "sigsgev" : "altstack",
+    "notifications" : "epoll",
+    "architecture" : "amd64",
+    "disabled_features" : "none",
+    "smallconfig" : "disabled",
+    "bigarrays" : "disabled",
+    "softdebug" : "enabled",
+    "interpreter" : "enabled",
+    "llvm_support" : "disabled",
+    "suspend" : "preemptive"
+  },
+  "memory" : {
+    "minor_gc_time" : "0",
+    "major_gc_time" : "6451",
+    "minor_gc_count" : "0",
+    "major_gc_count" : "1",
+    "major_gc_time_concurrent" : "0"
+ },
+  "threads" : [
+ {
+    "is_managed" : false,
+    "crashed" : false,
+    "managed_thread_ptr" : "0x0",
+    "native_thread_id" : "0x7fea2d36af80",
+    "thread_info_addr" : "0x0",
+    "thread_name" : "godot",
+    "ctx" : {
+      "IP" : "0x7fea2cf7a8c2",
+      "SP" : "0x7ffc022ecf40",
+      "BP" : "0x54816c0"
+  },
+    "unmanaged_frames" : [
+  {
+      "native_address" : "unregistered"
+   }
+
+  ]
+ },
+ {
+    "is_managed" : false,
+    "crashed" : true,
+    "managed_thread_ptr" : "0x0",
+    "native_thread_id" : "0x7fea1ddb3700",
+    "thread_info_addr" : "0x0",
+    "thread_name" : "Finalizer",
+    "ctx" : {
+      "IP" : "0x7fea2c40de97",
+      "SP" : "0x7fea1ddb1390",
+      "BP" : "0x7fea1ddb15e8"
+  },
+    "managed_frames" : [
+  {
+      "native_address" : "unregistered"
+   }
+
+  ],
+  "unmanaged_frames" : [
+ {
+    "native_address" : "unregistered"
+  }
+
+ ]
+}
+]
+}
