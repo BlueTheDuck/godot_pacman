@@ -15,6 +15,7 @@ func _draw():
 func _ready():
 	$Sprite/AnimationPlayer.play("eat");
 	my_node_id = nodes.find_closest_node(position).id;
+	my_node_id = 64;
 	position = nodes.list[my_node_id].pos;
 	
 func _process(delta):
