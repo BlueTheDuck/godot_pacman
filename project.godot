@@ -8,20 +8,30 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "RemoteControl",
+"language": "GDScript",
+"path": "res://src/remote.gd"
+} ]
 _global_script_class_icons={
-
+"RemoteControl": ""
 }
 
 [application]
 
 config/name="Pacman"
-run/main_scene="res://game.tscn"
+run/main_scene="res://main.tscn"
 config/icon="res://assets/icon.png"
 
 [autoload]
 
 nodes="*res://src/map_nodes.gd"
+
+[display]
+
+window/size/width=700
+window/size/height=850
 
 [input]
 
@@ -55,7 +65,14 @@ Click={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemies"
+2d_physics/layer_3="dots"
+
 [rendering]
 
+quality/intended_usage/framebuffer_allocation=0
 environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
