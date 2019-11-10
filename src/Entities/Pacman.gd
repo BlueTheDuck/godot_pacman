@@ -78,14 +78,19 @@ func _process(delta):
 			if ray.get_collider() is TileMap:
 				var tilemap: TileMap = ray.get_collider();
 				var point = ray.get_collision_point();
-				var map_point = tilemap.world_to_map(point+ray.position);
+				var map_point = tilemap.world_to_map(point);
 				$"/root/Node/Debug".emit_signal("draw_point",point,Color.pink);
-				if(tilemap.get_cellv(map_point)==dot_tile_id):
-					var distance = self.position.distance_to(point);
-					var distance_per = distance/game_state.BIGGEST_DISTANCE;
+				var distance = self.position.distance_to(point);
+				var distance_per = distance/game_state.BIGGEST_DISTANCE;
+				if tilemap.tile_set.tile_get_name( tilemap.get_cellv(map_point) )=="small_dot":
 					if distance<8:
 						game_state.emit_signal("update_score",10);
+						# Rays are not 100% precise, just clear the entire region
 						tilemap.set_cellv(map_point,-1);
+						tilemap.set_cellv(map_point+Vector2(1,0),-1);
+						tilemap.set_cellv(map_point+Vector2(0,1),-1);
+						tilemap.set_cellv(map_point+Vector2(-1,0),-1);
+						tilemap.set_cellv(map_point+Vector2(0,-1),-1);
 					else:
 						near_dots[node_ray_name] = 1 - distance_per;
 				else:

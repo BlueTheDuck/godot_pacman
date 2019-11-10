@@ -52,15 +52,15 @@ func process_command(pacman=null):
 							return;
 						for key in pacman.near_dots.keys():
 							var value: float = pacman.near_dots[key];
-							print("Sending ",value," for ",key);
+#							print("Sending ",value," for ",key);
 							tcp.put_float(value);
 						for key in pacman.near_walls.keys():
 							var value: float = pacman.near_walls[key];
-							print("Sending ",value," for ",key);
+#							print("Sending ",value," for ",key);
 							tcp.put_float(value);
 						for key in pacman.near_ghosts.keys():
 							var value: float = pacman.near_ghosts[key];
-							print("Sending ",value," for ",key);
+#							print("Sending ",value," for ",key);
 							tcp.put_float(value);
 						tcp.put_u32(game_state.score);
 					0x00:
