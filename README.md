@@ -12,3 +12,10 @@ The intention was to build a simplified version of the game that a simple *neura
 
 * [Godot Game Engine](https://godotengine.org)
 * Python and NEAT for the back-end
+
+## How to run
+
+1. Download [Godot](https://godotengine.org)
+2. Clone and open the project (Choose “import project” and find the file “project.godot”)
+3. Start the [server](https://github.com/PeronTheDuck/pyman_ai)
+4. Press F5 to let it play
