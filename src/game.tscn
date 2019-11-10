@@ -276,7 +276,6 @@ collide_with_areas = true
 "ghosts",
 ]]
 pause_mode = 1
-visible = false
 collision_layer = 2
 script = ExtResource( 4 )
 

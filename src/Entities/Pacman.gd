@@ -47,6 +47,7 @@ func _ready():
 	animation_player.play("eat");
 	dot_tile_id = preload("res://board_12x12.tres").find_tile_by_name("small_dot");
 	game_state.connect("move_player",self,"_on_move_player");
+	Input.action_press("left");
 	
 func _process(delta):
 	._process(delta);

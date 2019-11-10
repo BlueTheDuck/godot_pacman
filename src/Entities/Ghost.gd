@@ -4,6 +4,7 @@ extends "res://src/Entities/Entity.gd"
 var direction = 0;
 
 func _ready():
+	queue_free()
 	$Sprite/AnimationPlayer.play("up");
 	connect("set_direction",self,"_on_set_direction");
 	game_state.connect("change_node",self,"_change_dir");
