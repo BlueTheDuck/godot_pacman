@@ -27,6 +27,7 @@ config/icon="res://assets/icon.png"
 [autoload]
 
 nodes="*res://src/map_nodes.gd"
+game_state="*res://game_state.gd"
 
 [display]
 
@@ -69,7 +70,8 @@ Click={
 
 2d_physics/layer_1="player"
 2d_physics/layer_2="enemies"
-2d_physics/layer_3="dots"
+2d_physics/layer_3="walls"
+2d_physics/layer_4="dots"
 
 [rendering]
 

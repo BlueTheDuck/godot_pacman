@@ -1,6 +1,6 @@
 extends Control
 
-signal draw_point(where);
+signal draw_point(where,color);
 
 onready var pacman: Area2D = get_node("/root/Node/Game/Pacman");
 onready var blinky: Area2D = get_node("/root/Node/Game/Blinky");
@@ -15,6 +15,7 @@ var Colors: Dictionary = {
 	"Blinky": Color.red,
 };
 var points: Array = [];
+var colors: Array = [];
 
 func _input(event):
 	if Input.is_action_just_pressed("Click"):
@@ -41,16 +42,20 @@ func _draw():
 			draw_line(here.pos,here.pos+Vector2(-8,0),color);
 	for i in range(points.size()):
 		var point: Vector2 = points[i];
-		draw_circle(point,2,Color.orange);
+		draw_circle(point,2,colors[i]);
 
 
 func _ready():
-	pacman.connect("change_node",self,"_on_change_node");
-	blinky.connect("change_node",self,"_on_change_node");
+	game_state.connect("change_node",self,"_on_change_node");
+	game_state.connect("change_node",self,"_on_change_node");
 	self.connect("draw_point",self,"_add_point");
 	
-func _add_point(where: Vector2):
+func _add_point(where: Vector2,color: Color = Color.orange):
 	points.append(where);
+	colors.append(color);
+	while points.size()>400:
+		points.remove(0);
+		colors.remove(0);
 	
 	
 

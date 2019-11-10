@@ -130,7 +130,9 @@ var list: Array = [
 	Point.new(Vector2(col1,row10),[52,63,-1,-1]),
 	Point.new(Vector2(col5,row10),[56,64,-1,62]),
 	Point.new(Vector2(col6,row10),[57,65,-1,63]),
-	Point.new(Vector2(col10,row10),[61,-1,-1,64])
+	Point.new(Vector2(col10,row10),[61,-1,-1,64]),
+# Pacman spawn
+	Point.new(Vector2((col5+col6)/2,row8),[-1,47,-1,46])
 ]
 
 func find_closest_node(pos: Vector2):

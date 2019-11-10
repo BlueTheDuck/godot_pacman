@@ -5,7 +5,7 @@
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 6, 12, 6, 12, 12, 0, 12 )
 
-[sub_resource type="ConvexPolygonShape2D" id=10]
+[sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 12, 0, 12, 12, 0, 12 )
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
@@ -14,31 +14,31 @@ points = PoolVector2Array( 0, 0, 12, 0, 12, 12, 0, 12 )
 [sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 0, 0, 12, 0, 12, 12, 0, 12 )
 
-[sub_resource type="ConvexPolygonShape2D" id=7]
+[sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0, 0, 6, 0, 6, 12, 0, 12 )
 
-[sub_resource type="ConvexPolygonShape2D" id=11]
+[sub_resource type="ConvexPolygonShape2D" id=6]
 points = PoolVector2Array( 6, 0, 12, 0, 12, 12, 6, 12 )
 
-[sub_resource type="ConvexPolygonShape2D" id=13]
+[sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 0, 0, 12, 0, 12, 12, 0, 12 )
-
-[sub_resource type="ConvexPolygonShape2D" id=14]
-points = PoolVector2Array( 0, 0, 12, 0, 12, 12, 0, 12 )
-
-[sub_resource type="ConvexPolygonShape2D" id=5]
-points = PoolVector2Array( 0, 0, 12, 0, 12, 6, 0, 6 )
-
-[sub_resource type="ConvexPolygonShape2D" id=6]
-points = PoolVector2Array( 0, 6, 6, 6, 6, 12, 0, 12 )
 
 [sub_resource type="ConvexPolygonShape2D" id=8]
-points = PoolVector2Array( 0, 6, 6, 6, 6, 12, 0, 12 )
+points = PoolVector2Array( 0, 0, 12, 0, 12, 12, 0, 12 )
 
 [sub_resource type="ConvexPolygonShape2D" id=9]
-points = PoolVector2Array( 0, 6, 12, 6, 12, 12, 0, 12 )
+points = PoolVector2Array( 0, 0, 12, 0, 12, 6, 0, 6 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+points = PoolVector2Array( 0, 6, 6, 6, 6, 12, 0, 12 )
+
+[sub_resource type="ConvexPolygonShape2D" id=11]
+points = PoolVector2Array( 0, 6, 6, 6, 6, 12, 0, 12 )
 
 [sub_resource type="ConvexPolygonShape2D" id=12]
+points = PoolVector2Array( 0, 6, 12, 6, 12, 12, 0, 12 )
+
+[sub_resource type="ConvexPolygonShape2D" id=13]
 points = PoolVector2Array( 0, 0, 12, 0, 12, 12, 0, 12 )
 
 [resource]
@@ -57,7 +57,7 @@ points = PoolVector2Array( 0, 0, 12, 0, 12, 12, 0, 12 )
 "shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-0/z_index = 0
+0/z_index = 1
 1/name = "pacman_simonowen.png 1"
 1/texture = ExtResource( 1 )
 1/tex_offset = Vector2( 0, 0 )
@@ -70,10 +70,10 @@ points = PoolVector2Array( 0, 0, 12, 0, 12, 12, 0, 12 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 10 ),
+"shape": SubResource( 2 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-1/z_index = 0
+1/z_index = 1
 2/name = "pacman_simonowen.png 2"
 2/texture = ExtResource( 1 )
 2/tex_offset = Vector2( 0, 0 )
@@ -86,10 +86,10 @@ points = PoolVector2Array( 0, 0, 12, 0, 12, 12, 0, 12 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 11 ),
+"shape": SubResource( 6 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-2/z_index = 0
+2/z_index = 1
 3/name = "pacman_simonowen.png 3"
 3/texture = ExtResource( 1 )
 3/tex_offset = Vector2( 0, 0 )
@@ -102,10 +102,10 @@ points = PoolVector2Array( 0, 0, 12, 0, 12, 12, 0, 12 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 13 ),
+"shape": SubResource( 7 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-3/z_index = 0
+3/z_index = 1
 4/name = "pacman_simonowen.png 4"
 4/texture = ExtResource( 1 )
 4/tex_offset = Vector2( 0, 0 )
@@ -118,10 +118,10 @@ points = PoolVector2Array( 0, 0, 12, 0, 12, 12, 0, 12 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 14 ),
+"shape": SubResource( 8 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-4/z_index = 0
+4/z_index = 1
 5/name = "pacman_simonowen.png 5"
 5/texture = ExtResource( 1 )
 5/tex_offset = Vector2( 0, 0 )
@@ -134,10 +134,10 @@ points = PoolVector2Array( 0, 0, 12, 0, 12, 12, 0, 12 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 5 ),
+"shape": SubResource( 9 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-5/z_index = 0
+5/z_index = 1
 6/name = "pacman_simonowen.png 6"
 6/texture = ExtResource( 1 )
 6/tex_offset = Vector2( 0, 0 )
@@ -150,10 +150,10 @@ points = PoolVector2Array( 0, 0, 12, 0, 12, 12, 0, 12 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 6 ),
+"shape": SubResource( 10 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-6/z_index = 0
+6/z_index = 1
 7/name = "pacman_simonowen.png 7"
 7/texture = ExtResource( 1 )
 7/tex_offset = Vector2( 0, 0 )
@@ -166,10 +166,10 @@ points = PoolVector2Array( 0, 0, 12, 0, 12, 12, 0, 12 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 8 ),
+"shape": SubResource( 11 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-7/z_index = 0
+7/z_index = 1
 8/name = "pacman_simonowen.png 8"
 8/texture = ExtResource( 1 )
 8/tex_offset = Vector2( 0, 0 )
@@ -182,10 +182,10 @@ points = PoolVector2Array( 0, 0, 12, 0, 12, 12, 0, 12 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 9 ),
+"shape": SubResource( 12 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-8/z_index = 0
+8/z_index = 1
 9/name = "pacman_simonowen.png 9"
 9/texture = ExtResource( 1 )
 9/tex_offset = Vector2( 0, 0 )
@@ -198,10 +198,10 @@ points = PoolVector2Array( 0, 0, 12, 0, 12, 12, 0, 12 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 12 ),
+"shape": SubResource( 13 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-9/z_index = 0
+9/z_index = 1
 11/name = "small_dot"
 11/texture = ExtResource( 1 )
 11/tex_offset = Vector2( 0, 0 )
@@ -236,7 +236,7 @@ points = PoolVector2Array( 0, 0, 12, 0, 12, 12, 0, 12 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 7 ),
+"shape": SubResource( 5 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-12/z_index = 0
+12/z_index = 1
