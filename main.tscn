@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/game.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Control.gd" type="Script" id=2]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Label
 
 # Declare member variables here. Examples:
@@ -14,14 +14,14 @@ script/source = "extends Label
 func _ready():
 	pass # Replace with function body.
 func _process(delta):
-	set_text(str(Performance.get_monitor(Performance.TIME_FPS)));
+	set_text(\"FPS: %s\"%str(Performance.get_monitor(Performance.TIME_FPS)));
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 "
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=2]
 script/source = "extends Label
 
 
@@ -49,6 +49,42 @@ func _ready():
 #	pass
 "
 
+[sub_resource type="GDScript" id=5]
+script/source = "extends Label
+
+func _process(delta):
+	for key in [\"up\",\"right\",\"down\",\"left\"]:
+		if Input.is_action_pressed(key):
+			self.text = \"Key: %s\"%key;
+			break;
+		else:
+			self.text = \"Key: --\";"
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Node2D
+
+func _ready():
+	var nn := [
+		[0,0,0,0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,0,0],
+		[0,0,0,0],
+	];
+	var cnx := [
+		[]
+	];
+	var counter = -13;
+	var x = 0;
+	var y = 0;
+	for layer in nn:
+		y = 0;
+		for n in layer:
+			var gnode := Sprite.new();
+			gnode.set_script(preload(\"res://src/neuron.gd\"));
+			y += 40;
+			gnode.position = Vector2(x,y);
+			self.add_child(gnode);
+		x += 100"
+
 [node name="Node" type="Node"]
 
 [node name="Game" parent="." instance=ExtResource( 1 )]
@@ -56,34 +92,53 @@ func _ready():
 [node name="UI" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-
-[node name="FPS" type="Label" parent="UI"]
-margin_right = 40.0
-margin_bottom = 14.0
-script = SubResource( 2 )
+margin_top = -0.902527
+margin_bottom = -0.902527
 
 [node name="RightGUI" type="GridContainer" parent="UI"]
-anchor_right = 1.0
-margin_left = 618.0
-margin_bottom = 32.0
+margin_right = 93.7375
+margin_bottom = 63.9631
 
-[node name="Score" type="Label" parent="UI/RightGUI"]
+[node name="FPS" type="Label" parent="UI/RightGUI"]
 margin_right = 59.0
 margin_bottom = 14.0
-grow_horizontal = 0
-text = "Score: 0"
 script = SubResource( 1 )
 
-[node name="Resets" type="Label" parent="UI/RightGUI"]
+[node name="Score" type="Label" parent="UI/RightGUI"]
 margin_top = 18.0
 margin_right = 59.0
 margin_bottom = 32.0
 grow_horizontal = 0
+text = "Score: 0"
+script = SubResource( 2 )
+
+[node name="Resets" type="Label" parent="UI/RightGUI"]
+margin_top = 36.0
+margin_right = 59.0
+margin_bottom = 50.0
+grow_horizontal = 0
 text = "Resets: 0"
 script = SubResource( 3 )
 
-[node name="Debug" type="Control" parent="."]
+[node name="Key" type="Label" parent="UI/RightGUI"]
+margin_top = 54.0
+margin_right = 59.0
+margin_bottom = 68.0
+script = SubResource( 5 )
+
+[node name="Control" type="Control" parent="UI"]
 visible = false
+margin_left = 734.737
+margin_top = 433.842
+margin_right = 843.737
+margin_bottom = 518.842
+
+[node name="Node2D" type="Node2D" parent="UI/Control"]
+visible = false
+position = Vector2( -37.2315, -330.787 )
+script = SubResource( 4 )
+
+[node name="Debug" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 350.0

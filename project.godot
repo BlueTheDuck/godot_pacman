@@ -31,7 +31,7 @@ game_state="*res://game_state.gd"
 
 [display]
 
-window/size/width=700
+window/size/width=800
 window/size/height=850
 
 [input]

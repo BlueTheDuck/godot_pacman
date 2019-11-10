@@ -4,7 +4,7 @@ class_name RemoteControl
 
 
 var last_action = "";
-var tcp: StreamPeerTCP;
+var tcp: StreamPeerTCP = null;
 var pacman = null;
 var int_to_rot: Array = [
 	"fwd",
@@ -12,20 +12,25 @@ var int_to_rot: Array = [
 	"bwd",
 	"rot_right"
 ];
-	
+var force_cnx = true;
 
 func _init(pacman: Area2D):
 	self.pacman = pacman;
-	tcp = StreamPeerTCP.new();
-	print("Connecting");
-	var res = tcp.connect_to_host("127.0.0.1",4040);
-	assert(pacman!=null);
-	if res==OK:
-		tcp.put_utf8_string("CNX");
-		print("Sent data");
-		process_command();
-	else:
-		print("No connection");
+	var status = null;
+	while status!=StreamPeerTCP.STATUS_CONNECTED and force_cnx==true:
+		tcp = StreamPeerTCP.new();
+		print("Connecting");
+		var res = tcp.connect_to_host("127.0.0.1",4040);
+		print("Status: ",tcp.get_status())
+		assert(pacman!=null);
+		if res==OK and tcp.get_status()==StreamPeerTCP.STATUS_CONNECTED:
+			tcp.put_utf8_string("CNX");
+			print("Sent data");
+			process_command();
+			break;
+		elif force_cnx==false:
+			break;
+			
 		
 func process_command(pacman=null):
 	if tcp.get_status()!=tcp.STATUS_CONNECTED:
@@ -40,25 +45,40 @@ func process_command(pacman=null):
 				match bytes[1]:
 					0xFE:
 						print("Requested update");
-						assert(pacman!=null);
+						if pacman==null:
+							for i in range(12):
+								tcp.put_float(0.0);
+							tcp.put_u32(0);
+							return;
 						for key in pacman.near_dots.keys():
 							var value: float = pacman.near_dots[key];
-#							print("Sending ",value," for ",key);
+							print("Sending ",value," for ",key);
 							tcp.put_float(value);
 						for key in pacman.near_walls.keys():
 							var value: float = pacman.near_walls[key];
-#							print("Sending ",value," for ",key);
+							print("Sending ",value," for ",key);
 							tcp.put_float(value);
 						for key in pacman.near_ghosts.keys():
 							var value: float = pacman.near_ghosts[key];
-#							print("Sending ",value," for ",key);
+							print("Sending ",value," for ",key);
 							tcp.put_float(value);
 						tcp.put_u32(game_state.score);
 					0x00:
 						print("Closing");
 						game_state.score = 0
 						game_state.resets += 1
-						print(pacman.get_tree().reload_current_scene())
+						pacman.get_tree().reload_current_scene()
+					0xF0:
+						print("Unimplemented")
+						assert(false)
+#						print("Receiving nn structure");
+#						var nns: int = tcp.get_u64(); # Gen neuron count
+#						print("%s neurons"%nns);
+#						var cnxs: int = tcp.get_u32(); 
+#						for i in range(cnxs):
+#							var from: int = tcp.get_32();
+#							var to: int = tcp.get_32();
+#							var weight: float = tcp.get_float();
 			0xFF:
 				if last_action!="":
 					Input.action_release(last_action);

@@ -53,7 +53,7 @@ func _ready():
 func _add_point(where: Vector2,color: Color = Color.orange):
 	points.append(where);
 	colors.append(color);
-	while points.size()>400:
+	while points.size()>100:
 		points.remove(0);
 		colors.remove(0);
 	

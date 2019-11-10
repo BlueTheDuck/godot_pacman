@@ -40,6 +40,7 @@ var near_ghosts: Dictionary = {
 	"back": 0
 }
 var direction: String = "right";
+var machine_pressed_key: String = "";
 
 func _ready():
 	remote_control = RemoteControl.new(self);
@@ -107,9 +108,7 @@ func _process(delta):
 	for ghost_ray_name in ghosts_rays.keys():
 		var ray = ghosts_rays.get(ghost_ray_name);
 		if ray.is_colliding():
-			if ray.get_collider() is TileMap:
-				near_ghosts[ghost_ray_name] = 0;
-			elif ray.get_collider() is Area2D:
+			if ray.get_collider() is Area2D:
 				var ghost = ray.get_collider();
 				print("Found ghost ",ghost.get_name());
 				var point = ray.get_collision_point();
@@ -117,6 +116,9 @@ func _process(delta):
 				var distance = self.position.distance_to(point);
 				var distance_per = distance/game_state.BIGGEST_DISTANCE;
 				near_ghosts[ghost_ray_name] = 1 - distance_per;
+			else:
+				near_ghosts[ghost_ray_name] = 0;
+				
 
 func _on_move_player(direction):
 	print("Rotating ",direction);
@@ -135,12 +137,18 @@ func rotate_to(name: String):
 		"bwd": 180,
 		"rot_right": 90
 	};
+	
+	if machine_pressed_key!="":
+		Input.action_release(machine_pressed_key)
+		machine_pressed_key = ""
+		
 	var rotation_degrees = (directions[direction] + rotations[name] + 360)%360;
 	print("Degrees: ",rotation_degrees);
 	for key in directions.keys():
 		if directions[key]==rotation_degrees:
 			print("Pressing ",key);
 			Input.action_press(key);
+			machine_pressed_key = key;
 			return;
 	assert(false);
 
