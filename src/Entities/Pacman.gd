@@ -1,7 +1,6 @@
 extends "res://src/Entities/Entity.gd"
 
 var remote_control: RemoteControl = null;
-var dot_tile_id = -2;
 onready var animation_player = get_node("Sprite/AnimationPlayer");
 onready var nodes_rays: Dictionary = {
 	"left":  $DotsRays/Left,
@@ -46,7 +45,6 @@ func _ready():
 	remote_control = RemoteControl.new(self);
 	current_node = -1;
 	animation_player.play("eat");
-	dot_tile_id = preload("res://board_12x12.tres").find_tile_by_name("small_dot");
 	game_state.connect("move_player",self,"_on_move_player");
 	Input.action_press("left");
 	
@@ -82,20 +80,19 @@ func _process(delta):
 				$"/root/Node/Debug".emit_signal("draw_point",point,Color.pink);
 				var distance = self.position.distance_to(point);
 				var distance_per = distance/game_state.BIGGEST_DISTANCE;
-				var cell_id = tilemap.get_cellv(map_point);
-				if cell_id!=tilemap.INVALID_CELL and tilemap.tile_set.tile_get_name(cell_id)=="small_dot":
-					if distance<8:
-						game_state.emit_signal("update_score",10);
-						# Rays are not 100% precise, just clear the entire region
-						tilemap.set_cellv(map_point,-1);
-						tilemap.set_cellv(map_point+Vector2(1,0),-1);
-						tilemap.set_cellv(map_point+Vector2(0,1),-1);
-						tilemap.set_cellv(map_point+Vector2(-1,0),-1);
-						tilemap.set_cellv(map_point+Vector2(0,-1),-1);
+				# Rays are not 100% precise with tilemaps, just work with the entire region
+				for v in [Vector2(0,0),Vector2(0,1),Vector2(1,0),Vector2(0,-1),Vector2(-1,0)]:
+					var cell_id = tilemap.get_cellv(map_point+v);
+					if cell_id!=tilemap.INVALID_CELL and tilemap.tile_set.tile_get_name(cell_id)=="small_dot":
+						if distance<8:
+							tilemap.set_cellv(map_point+v,-1)
+							game_state.emit_signal("update_score",10);
+							tilemap.set_cellv(map_point+v,-1);
+						else:
+							near_dots[node_ray_name] = 1 - distance_per;
+						break
 					else:
-						near_dots[node_ray_name] = 1 - distance_per;
-				else:
-					near_dots[node_ray_name] = 0;
+						near_dots[node_ray_name] = 0;
 					
 	# Can Pacman see any wall?
 	for wall_ray_name in walls_rays.keys():
