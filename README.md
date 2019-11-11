@@ -1,6 +1,6 @@
 # Godot makes Pacman
 
-“Simple” implementation of the clasic ghost-chasing game using Godot Game Engine
+“Simple” implementation of the classic ghost-chasing game using Godot Game Engine
 
 ## Why
 
