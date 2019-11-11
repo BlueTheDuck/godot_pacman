@@ -82,7 +82,8 @@ func _process(delta):
 				$"/root/Node/Debug".emit_signal("draw_point",point,Color.pink);
 				var distance = self.position.distance_to(point);
 				var distance_per = distance/game_state.BIGGEST_DISTANCE;
-				if tilemap.tile_set.tile_get_name( tilemap.get_cellv(map_point) )=="small_dot":
+				var cell_id = tilemap.get_cellv(map_point);
+				if cell_id!=tilemap.INVALID_CELL and tilemap.tile_set.tile_get_name(cell_id)=="small_dot":
 					if distance<8:
 						game_state.emit_signal("update_score",10);
 						# Rays are not 100% precise, just clear the entire region
