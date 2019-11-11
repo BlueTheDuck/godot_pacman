@@ -106,6 +106,8 @@ func _process(delta):
 				var distance = self.position.distance_to(point);
 				var distance_per = distance/game_state.BIGGEST_DISTANCE;
 				near_walls[wall_ray_name] = 1 - distance_per;
+		else:
+			near_walls[wall_ray_name] = 0;
 				
 	# Can Pacman see any ghost?
 	for ghost_ray_name in ghosts_rays.keys():
