@@ -14,6 +14,7 @@ func _ready():
 	position = nodes.list[current_node].pos;
 
 func _process(delta):
+	# Attach to node
 	var node = nodes.find_closest_node(position);
 	if node.dist < attach_to_node_threshold:
 		if current_node!=node.id:
@@ -24,6 +25,11 @@ func _process(delta):
 		if current_node!=node.id:
 			game_state.emit_signal("change_node",current_node,get_name());
 		current_node = -1;
+	# Teleport entity
+	if position.x > nodes.col10 + nodes.tile_size*2:
+		position.x = 0;
+	if position.x < 0:
+		position.x += nodes.col10 + nodes.tile_size*2;
 
 func check_node_walls():
 	if velocity.y < 0 && nodes.list[current_node].get_id_on(nodes.direction("up"))==-1:

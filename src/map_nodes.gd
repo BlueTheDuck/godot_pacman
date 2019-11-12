@@ -86,12 +86,12 @@ var list: Array = [
 	Point.new(Vector2(col6,row4),[18,25,-1,23]),
 	Point.new(Vector2(col7,row4),[-1,-1,58,24]),
 # Row 5
-	Point.new(Vector2(col1,row5),[-1,27,-1,-1]),
+	Point.new(Vector2(col1,row5),[-1,27,-1,31]),
 	Point.new(Vector2(col3,row5),[15,28,54,26]),
 	Point.new(Vector2(col4,row5),[22,-1,55,27]),
 	Point.new(Vector2(col7,row5),[25,30,58,-1]),
 	Point.new(Vector2(col8,row5),[20,31,59,29]),
-	Point.new(Vector2(col10,row5),[-1,-1,-1,30]),
+	Point.new(Vector2(col10,row5),[-1,26,-1,30]),
 # Row 6
 	Point.new(Vector2(col4,row6),[28,33,55,-1]),
 	Point.new(Vector2(col7,row6),[29,-1,58,32]),
