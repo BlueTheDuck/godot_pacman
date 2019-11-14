@@ -45,23 +45,27 @@ func process_command(pacman=null):
 				match bytes[1]:
 					0xFE:
 						print("Requested update");
+						tcp.put_u32(1); # Pacman alive
 						if pacman==null:
 							for i in range(12):
 								tcp.put_float(0.0);
 							tcp.put_u32(0);
 							return;
-						for key in pacman.near_dots.keys():
-							var value: float = pacman.near_dots[key];
-#							print("Sending ",value," for ",key);
-							tcp.put_float(value);
-						for key in pacman.near_walls.keys():
-							var value: float = pacman.near_walls[key];
-#							print("Sending ",value," for ",key);
-							tcp.put_float(value);
-						for key in pacman.near_ghosts.keys():
-							var value: float = pacman.near_ghosts[key];
-#							print("Sending ",value," for ",key);
-							tcp.put_float(value);
+						for iter in [pacman.near_dots.values(),pacman.near_walls.values(),pacman.near_ghosts.values()]:
+							for value in iter:
+								tcp.put_float(value);
+#						for key in pacman.near_dots.keys():
+#							var value: float = pacman.near_dots[key];
+##							print("Sending ",value," for ",key);
+#							tcp.put_float(value);
+#						for key in pacman.near_walls.keys():
+#							var value: float = pacman.near_walls[key];
+##							print("Sending ",value," for ",key);
+#							tcp.put_float(value);
+#						for key in pacman.near_ghosts.keys():
+#							var value: float = pacman.near_ghosts[key];
+##							print("Sending ",value," for ",key);
+#							tcp.put_float(value);
 						tcp.put_u32(game_state.score);
 					0x00:
 						print("Closing");
